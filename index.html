@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+  <script src="getData.js"></script>
+  <style>
+    body {
+      background-image: url(https://source.unsplash.com/NcdG9mK3PBY/800x600);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .card-body {
+
+        background-color: black;
+        color: white;
+    }
+    .felezo{
+        margin-top: 350px;
+    }
+    .korvonal{
+        border-style: solid;
+        border-width:2px ;
+        border-radius: 8px;
+        border-color: rgb(34,34,34);
+        color: rgb(34,34,34);
+        padding-top: 8px;
+    }
+  </style>
+  <body onkeydown="test(event)">
+    <div class="row d-flex justify-content-center text-center felezo"></div>
+
+    
+
+    
+
+    <script>
+      const url =
+        "https://raw.githubusercontent.com/mkatay/json-drums/main/drums";
+      getData(url, renderData);
+
+      function renderData(data) {
+        //console.log(data);
+
+        /*
+        data.forEach((elem) => {
+         let myid='k'+elem.key
+console.log(myid);
+          document.querySelector(".row").innerHTML += `
+             <div class=" col-md-1 m-2 korvonal card" style="width: 18rem;">
+                <div class="card-body">
+                <kbd class="card-title">${elem.letter}</kbd>
+                <span>${elem.sound}</span>
+                <audio src="${elem.url}" id="${myid}"</audio>
+            </div>
+        </div>
+                `;
+        });
+      }
+*/
+      function test(e) {
+        const sounds = document.querySelectorAll("audio")//nodelist
+            console.log(e.keyCode)
+           
+            sounds.forEach((elem)=>{
+                console.log(elem);
+                console.log('----',elem.id,'k'+e.keyCode)
+                if(e.keyCode == elem.id){
+                    let id = e.keyCode
+                    console.log(elem.id)
+                    document.getElementById(id).play()
+                }
+      })
+      for(let obj of sounds){
+        console.log('id:',obj.id);
+        if('k'+e.keyCode == obj.id){
+                    document.getElementById(obj.id).play()
+                }
+      }
+    }
+
+      
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
